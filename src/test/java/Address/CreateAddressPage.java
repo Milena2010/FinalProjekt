@@ -34,8 +34,6 @@ public class CreateAddressPage {
     private List<WebElement> addressList;
     @FindBy(xpath = "/html/body/main/section/div/div/section/section/div[1]/article/div[2]/a[1]")
     private WebElement updateButton;
-    @FindBy(css = ".alert.alert-success")
-    private WebElement successInformation;
 
     public void setAliasInput(String alias) {
         aliasInput.click();
@@ -70,6 +68,11 @@ public class CreateAddressPage {
         phoneInput.click();
         phoneInput.clear();
         phoneInput.sendKeys(phone);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setSaveAddressInfo() {
@@ -117,7 +120,5 @@ public class CreateAddressPage {
         return phoneInput.getAttribute("value");
     }
 
-    public String getInformation() {
-        return successInformation.getText();
-    }
 }
+

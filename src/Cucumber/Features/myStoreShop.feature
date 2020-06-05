@@ -5,7 +5,6 @@ Feature: MyStore logIn
     Given User can logged to MyStore shop site from CodersLab
     When User create new address form <alias>, <address>, <city>, <postCode>, <country>, <phone>
     Then User check address
-    And User sees information Address successfully added!
 
   Examples:
       | alias     | address   | city     | postCode | country        | phone        |

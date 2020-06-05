@@ -1,7 +1,6 @@
 package Address;
 
 import LogIn.LogInPage;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -43,6 +42,7 @@ public class AddressSteps {
         signIn.click();
 
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=addresses");
+
             CreateNewAddress createNewAddress = new CreateNewAddress(driver);
             createNewAddress.setCreateNewAddress();
 }
@@ -54,11 +54,17 @@ public class AddressSteps {
 
 // uzupełnienie danych adresowych
         createAddressPage.setAliasInput(alias);
+        this.alias = alias;
         createAddressPage.setAddressInput(address);
+        this.address = address;
         createAddressPage.setCityInput(city);
+        this.city = city;
         createAddressPage.setPostCodeInput(postCode);
+        this.postCode = postCode;
         createAddressPage.setRoleDropCountry(country);
+        this.country = country;
         createAddressPage.setPhoneInput(phone);
+        this.phone = phone;
 
 // zapisanie danych adresowych
         createAddressPage.setSaveAddressInfo();
@@ -72,6 +78,7 @@ public class AddressSteps {
     }
 
     @Then("User check address")
+
     public void checkAddress() {
         this.createNewAddress = new CreateNewAddress(driver);
         Assert.assertEquals(this.alias, createAddressPage.getAliasCheck());
@@ -86,9 +93,5 @@ public class AddressSteps {
         System.out.println("Country field pass");
         Assert.assertEquals(this.phone, createAddressPage.getPhoneCheck());
         System.out.println("Phone field pass");
-    }
-    @And("User sees information (.*)")
-    public void successAddressDeleted(String message) {
-        Assert.assertEquals(message, createAddressPage.getInformation());
     }
 }
